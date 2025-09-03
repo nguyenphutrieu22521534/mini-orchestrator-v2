@@ -40,6 +40,7 @@ mini-orchestrator-v2/
 │       ├── sample3.log
 │       └── sample4.log
 └── README.md
+```
 
 ### Log Parser Implementation
 
