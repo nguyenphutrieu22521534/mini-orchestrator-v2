@@ -1,0 +1,10 @@
+[GET] /products/items, status=200, time=2.345678ms user-agent=axios/1.11.0
+[POST] /auth/refresh, status=200, time=4.567890ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[PUT] /clubs/789/membership, status=200, time=9.876543ms user-agent=python-requests/2.27.1
+[DELETE] /notifications/all, status=204, time=3.210987ms user-agent=axios/1.11.0
+[GET] /users/67890/activity, status=200, time=5.432109ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[POST] /products/checkout, status=400, time=12.109876ms user-agent=python-requests/2.27.1
+[GET] /api/config, status=200, time=0.654321ms user-agent=axios/1.11.0
+[PUT] /orders/456/status, status=200, time=7.890123ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[DELETE] /cart/items/123, status=204, time=2.109876ms user-agent=python-requests/2.27.1
+[GET] /events/popular, status=200, time=8.765432ms user-agent=axios/1.11.0

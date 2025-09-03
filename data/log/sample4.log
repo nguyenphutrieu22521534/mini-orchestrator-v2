@@ -1,0 +1,10 @@
+[POST] /support/tickets, status=201, time=20.987654ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[GET] /internal/metrics, status=200, time=1.543210ms user-agent=python-requests/2.27.1
+[PUT] /users/profile/avatar, status=200, time=14.321098ms user-agent=axios/1.11.0
+[DELETE] /events/789abc123def456/archive, status=200, time=6.789012ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[GET] /products/categories, status=200, time=3.456789ms user-agent=python-requests/2.27.1
+[POST] /newsletter/subscribe, status=201, time=5.678901ms user-agent=axios/1.11.0
+[GET] /api/features, status=200, time=1.098765ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[PUT] /settings/notifications, status=200, time=8.901234ms user-agent=python-requests/2.27.1
+[DELETE] /sessions/all, status=204, time=4.321098ms user-agent=axios/1.11.0
+[GET] /clubs/recommended, status=200, time=10.123456ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36

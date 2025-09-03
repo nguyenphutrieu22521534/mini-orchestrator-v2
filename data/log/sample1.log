@@ -1,0 +1,10 @@
+[GET] /events/6858ffdf5686e23452fe727b/summary, status=200, time=1.662137ms user-agent=axios/1.11.0
+[GET] /internal/products/events/6858ffdf5686e23452fe727b/category, status=200, time=2.968988ms user-agent=python-requests/2.27.1
+[POST] /clubs, status=201, time=15.676557ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+[GET] /users/profile, status=200, time=0.892341ms user-agent=axios/1.11.0
+[PUT] /users/settings, status=200, time=8.234567ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+[DELETE] /sessions/12345, status=204, time=1.123456ms user-agent=python-requests/2.27.1
+[GET] /api/health, status=200, time=0.123456ms user-agent=curl/7.68.0
+[POST] /auth/login, status=401, time=45.678901ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+[GET] /products/list, status=200, time=12.345678ms user-agent=axios/1.11.0
+[POST] /orders/create, status=500, time=123.456789ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36

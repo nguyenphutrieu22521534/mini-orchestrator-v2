@@ -1,0 +1,10 @@
+[GET] /events/6858ffdf5686e23452fe727b/comments, status=200, time=4.567890ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[PUT] /users/profile, status=200, time=6.789012ms user-agent=python-requests/2.27.1
+[GET] /api/version, status=200, time=0.987654ms user-agent=axios/1.11.0
+[POST] /events/6858ffdf5686e23452fe727b/register, status=201, time=18.234567ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[DELETE] /users/12345, status=404, time=3.456789ms user-agent=python-requests/2.27.1
+[GET] /events/search, status=200, time=9.876543ms user-agent=axios/1.11.0
+[POST] /notifications, status=201, time=7.654321ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+[GET] /events/6858ffdf5686e23452fe727b/attendees, status=200, time=5.432109ms user-agent=python-requests/2.27.1
+[PUT] /events/6858ffdf5686e23452fe727b/settings, status=200, time=11.234567ms user-agent=axios/1.11.0
+[GET] /api/status, status=503, time=1.234567ms user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
