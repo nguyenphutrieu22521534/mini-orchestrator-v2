@@ -1,62 +1,52 @@
 import argparse
 import sys
+from core.command_registry import registry
 from features.ingest import LogParser
 from features.prime import PrimeCalculator
 
-
+@registry.register('ingest', 'Log parsing feature')
+@registry.add_argument('ingest', '--path', type=str, required=True, help='Path to log file')
+@registry.add_argument('ingest', '--worker', type=int, default=2, help='Number of workers (default: 2)')
+@registry.add_argument('ingest', '--mode', choices=['threading', 'process'], default='threading',
+                     help='Execution mode: threading or process (default: threading)')
 def run_ingest(args: argparse.Namespace) -> None:
     log_parser = LogParser(args.path, args.worker, args.mode)
     results = log_parser.parse_logs()
     log_parser.display_results(results)
 
-
 def run_prime(args: argparse.Namespace) -> None:
     prime_calc = PrimeCalculator(args.worker, args.mode)
     prime_calc.calculate_primes()
-
 
 def main():
     parser = argparse.ArgumentParser(
         description="Mini Orchestrator - Log parsing and Prime calculations",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  python main.py ingest --path ./data/log --worker 4 --mode threading
-  python main.py prime --worker 2 --mode process
-        """
     )
 
-    subparsers = parser.add_subparsers(dest='command')
+    subparsers = parser.add_subparsers(dest='command', required=True)
 
-    # Ingest subcommand
-    ingest_parser = subparsers.add_parser(
-        'ingest',
-        help='Log parsing feature'
-    )
-    ingest_parser.add_argument('--path', required=True, help='Path to log directory')
-    ingest_parser.add_argument('--worker', type=int, default=2, help='Number of workers (default: 2)')
-    ingest_parser.add_argument('--mode', choices=['threading', 'process'], default='threading',
-                               help='Execution mode: threading or process (default: threading)')
-    ingest_parser.set_defaults(func=run_ingest)
+    # Tự động tạo subparser cho các command trong registry (ở đây chỉ có ingest)
+    for cmd_name, cmd_info in registry.commands.items():
+        cmd_parser = subparsers.add_parser(cmd_name, help=cmd_info['help'])
+        for arg_args, arg_kwargs in cmd_info['args']:
+            cmd_parser.add_argument(*arg_args, **arg_kwargs)
+        cmd_parser.set_defaults(func=cmd_info['func'])
 
-    # Prime subcommand
-    prime_parser = subparsers.add_parser(
-        'prime',
-        help='Prime calculations feature'
-    )
+    # Đăng ký thủ công cho prime command
+    
+    prime_parser = subparsers.add_parser('prime', help='Prime calculations feature')
     prime_parser.add_argument('--worker', type=int, default=2, help='Number of workers (default: 2)')
     prime_parser.add_argument('--mode', choices=['threading', 'process'], default='threading',
-                              help='Execution mode: threading or process (default: threading)')
+                          help='Execution mode: threading or process (default: threading)')
     prime_parser.set_defaults(func=run_prime)
 
     args = parser.parse_args()
-
-    if not hasattr(args, 'func'):
+    if hasattr(args, 'func'):
+        args.func(args)
+    else:
         parser.print_help()
         sys.exit(1)
-
-    args.func(args)
-
 
 if __name__ == "__main__":
     main()
