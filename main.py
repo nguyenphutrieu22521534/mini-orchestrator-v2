@@ -4,6 +4,17 @@ from features.ingest import LogParser
 from features.prime import PrimeCalculator
 
 
+def run_ingest(args: argparse.Namespace) -> None:
+    log_parser = LogParser(args.path, args.worker, args.mode)
+    results = log_parser.parse_logs()
+    log_parser.display_results(results)
+
+
+def run_prime(args: argparse.Namespace) -> None:
+    prime_calc = PrimeCalculator(args.worker, args.mode)
+    prime_calc.calculate_primes()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Mini Orchestrator - Log parsing and Prime calculations",
@@ -15,28 +26,37 @@ Examples:
         """
     )
 
-    parser.add_argument('feature', choices=['ingest', 'prime'],
-                        help='Feature to run: ingest (log parsing) or prime (prime calculations)')
-    parser.add_argument('--path', help='Path to log directory (for ingest feature)')
-    parser.add_argument('--worker', type=int, default=2,
-                        help='Number of workers (default: 2)')
-    parser.add_argument('--mode', choices=['threading', 'process'], default='threading',
-                        help='Execution mode: threading or process (default: threading)')
+    subparsers = parser.add_subparsers(dest='command')
+
+    # Ingest subcommand
+    ingest_parser = subparsers.add_parser(
+        'ingest',
+        help='Log parsing feature'
+    )
+    ingest_parser.add_argument('--path', required=True, help='Path to log directory')
+    ingest_parser.add_argument('--worker', type=int, default=2, help='Number of workers (default: 2)')
+    ingest_parser.add_argument('--mode', choices=['threading', 'process'], default='threading',
+                               help='Execution mode: threading or process (default: threading)')
+    ingest_parser.set_defaults(func=run_ingest)
+
+    # Prime subcommand
+    prime_parser = subparsers.add_parser(
+        'prime',
+        help='Prime calculations feature'
+    )
+    prime_parser.add_argument('--worker', type=int, default=2, help='Number of workers (default: 2)')
+    prime_parser.add_argument('--mode', choices=['threading', 'process'], default='threading',
+                              help='Execution mode: threading or process (default: threading)')
+    prime_parser.set_defaults(func=run_prime)
 
     args = parser.parse_args()
 
-    if args.feature == 'ingest':
-        if not args.path:
-            print("Error: --path is required for ingest feature")
-            sys.exit(1)
+    if not hasattr(args, 'func'):
+        parser.print_help()
+        sys.exit(1)
 
-        log_parser = LogParser(args.path, args.worker, args.mode)
-        results = log_parser.parse_logs()
-        log_parser.display_results(results)
+    args.func(args)
 
-    elif args.feature == 'prime':
-        prime_calc = PrimeCalculator(args.worker, args.mode)
-        prime_calc.calculate_primes()
 
 if __name__ == "__main__":
     main()
