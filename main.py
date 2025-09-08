@@ -4,7 +4,6 @@ from core.command_registry import registry
 from features.ingest import LogParser
 from features.prime import PrimeCalculator
 
-#@registry.register('ingest', 'Log parsing feature')
 @registry.add_argument_decorator('ingest', '--path', type=str, required=True, help='Path to log file')
 @registry.add_argument_decorator('ingest', '--worker', type=int, default=2, help='Number of workers (default: 2)')
 @registry.add_argument_decorator('ingest', '--mode', choices=['threading', 'process'], default='threading',

@@ -10,7 +10,6 @@ class Registry:
                 'help': help_text,
                 'args': []
             }
-            # Thêm các arguments đang chờ (nếu có) vào command
             if name in self.pending_args:
                 self.commands[name]['args'].extend(self.pending_args[name])
                 del self.pending_args[name]
@@ -32,7 +31,6 @@ class Registry:
             if command_name in self.commands:
                 self.commands[command_name]['args'].append((args, kwargs))
             else:
-                # Nếu command chưa được đăng ký, lưu argument vào pending
                 if command_name not in self.pending_args:
                     self.pending_args[command_name] = []
                 self.pending_args[command_name].append((args, kwargs))
