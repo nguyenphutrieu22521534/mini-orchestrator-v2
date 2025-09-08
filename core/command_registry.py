@@ -40,7 +40,6 @@ class Registry:
         return decorator
 
     def add_argument(self, command_name: str, *args, **kwargs):
-        """Thêm argument cho command mà không cần decorator"""
         if command_name in self.commands:
             self.commands[command_name]['args'].append((args, kwargs))
         else:
