@@ -28,17 +28,20 @@ A lightweight Python application that demonstrates concurrent processing capabil
 
 ```
 mini-orchestrator-v2/
-├── main.py                 # Main entry point with CLI interface
-├── features/
+├── core/
 │   ├── __init__.py
-│   ├── ingest.py          # Log parsing functionality
-│   └── prime.py           # Prime calculation functionality
+│   └── command_registry.py
 ├── data/
-│   └── log/               # Sample log files for testing
+│   └── log/
 │       ├── sample1.log
 │       ├── sample2.log
 │       ├── sample3.log
 │       └── sample4.log
+├── features/
+│   ├── __init__.py
+│   ├── ingest.py
+│   └── prime.py
+├── main.py
 └── README.md
 ```
 
